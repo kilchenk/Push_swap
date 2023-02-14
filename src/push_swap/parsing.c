@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 13:28:56 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/01/10 13:09:22 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/02/14 18:52:25 by kilchenk          #+#    #+#             */
+/*   Updated: 2023/02/14 19:23:02 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_stack	*pars_str(char *str)
 {
-	t_list	*ret;
-	t_list	*new;
+	t_stack		*new;
+	long int	nb;
+	char		**number;
+	int			i;
 
-	if (!lst)
-		return (NULL);
-	ret = NULL;
-	while (lst)
-	{
-		new = ft_lstnew((*f)(lst->content));
-		if (!new)
-		{
-			del(new);
-		}
-		ft_lstadd_back(&ret, new);
-		lst = lst->next;
-	}
-	return (ret);
+	number = ft_split(str, ' ');
+	if (!input_check(number))
+		error("Error");
+	
 }

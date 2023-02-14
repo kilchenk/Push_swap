@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/30 21:01:31 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/01/10 13:08:54 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/02/14 17:00:46 by kilchenk          #+#    #+#             */
+/*   Updated: 2023/02/14 19:16:17 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	arg_check(char *av)
 {
-	t_list	*last;
+	int	i;
 
-	last = NULL;
-	if (*lst)
+	i = 0;
+	if (sign(av[i]) && av[i + 1] != '\0') /* ? */
+		i++;
+	while (ft_isdigit(av[i]) && av[i])
+		i++;
+	if (!ft_isdigit(av[i]) && av[i] != '0')
+		return (0);
+	return (1);
+}
+
+int	input_check(char **av)
+{
+	int	i;
+	int	zero;
+
+	zero = 0;
+	i = 0;
+	while (av[i])
 	{
-		last = ft_lstlast(*lst);
-		last->next = new;
+		if (!arg_check(av[i]))
+			return (0);
+		
 	}
-	else
-		*lst = new;
+	
 }

@@ -6,53 +6,90 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/03 14:27:39 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/14 18:58:22 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	push_swap.c					\
-		swap.c						\
-	
-SRC_MAIN = main.c
-
 NAME = push_swap
 
-LIBFT = inc/libft/
-
-PRINTF = inc/ft_printf/
-
-OBJ_DIR = obj/
-SRC_DIR = src/push_swap/
-
-OBJ = $(SRC:.c=.o)
-OBJ_MAIN = $(SRC_MAIN:.c=.o)
-OBJ_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ))
-OBJ_MAIN_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ_MAIN))
-SRC_PREFIX = $(addprefix $(SRC_DIR), $(SRC))
-SRC_MAIN_PREFIX = $(addprefix $(SRC_DIR), $(SRC_MAIN))
+SRC =	push_swap.c					\
+		main.c						\
+		push_swap_utilis.c			\
+		input_check.c				\
+		parsing.c					\
+		
+		
+OBJ =	$(SRC:.c=.o)
 
 CC = gcc
+FLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+MV = mv
 
-CC_FLAGS = -Wall -Werror -Wextra
-
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c inc/push_swap.h
-	@mkdir -p $(OBJ_DIR)
-	@echo "Compiling:  $<"
-	@gcc $(CC_FLAGS) -c $< -o $@
-
-$(NAME): $(OBJECTS_PREFIXED) $(OBJECT_MAIN_PREFIXED)
-	@make -C $(LIBFT)
-	@make -C $(PRINTF)
-	@gcc -o $(NAME) $(OBJECTS_PREFIXED) $(OBJ_MAIN_PREFIX) inc/libft/libft.a inc/ft_printf/ft_printf.a
+LIBFT =	inc/Libft/libft.a
 
 all: $(NAME)
 
-clean:
-	@rm -rf $(OBJ_DIR)
-	@make fclean -C $(LIBFT)
-	@make fclean -C $(PRINTF)
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "\033[92m.\033[0m\c"
 
+$(NAME): $(OBJ) $(SRC)
+	@$(MAKE) -C Libft
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
+	@echo "\033[92mPush_swap successfully compiled!\033[0m"
+
+clean:
+	@$(MAKE) fclean -C Libft
+	@$(RM) $(OBJ) 
+	@echo "\033[0;31mPush_swap successfully cleaned!\033[0m"
 fclean: clean
-	@rm -f $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
+
+
+# SRCS =	push_swap.c					\
+# 		swap.c						\
+	
+# SRC_MAIN = main.c
+
+# NAME = push_swap
+
+# LIBFT = inc/libft/
+
+# OBJ_DIR = obj/
+# SRC_DIR = src/push_swap/
+
+# OBJ = $(SRC:.c=.o)
+# OBJ_MAIN = $(SRC_MAIN:.c=.o)
+# OBJ_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ))
+# OBJ_MAIN_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ_MAIN))
+# SRC_PREFIX = $(addprefix $(SRC_DIR), $(SRC))
+# SRC_MAIN_PREFIX = $(addprefix $(SRC_DIR), $(SRC_MAIN))
+
+# CC = gcc
+
+# CC_FLAGS = -Wall -Werror -Wextra
+
+# $(OBJ_DIR)%.o : $(SRC_DIR)%.c inc/push_swap.h
+# 	@mkdir -p $(OBJ_DIR)
+# 	@echo "Compiling:  $<"
+# 	@gcc $(CC_FLAGS) -c $< -o $@
+
+# $(NAME): $(OBJECTS_PREFIXED) $(OBJECT_MAIN_PREFIXED)
+# 	@make -C $(LIBFT)
+# 	@gcc -o $(NAME) $(OBJECTS_PREFIXED) $(OBJ_MAIN_PREFIX) inc/libft/libft.a
+
+# all: $(NAME)
+
+# clean:
+# 	@rm -rf $(OBJ_DIR)
+# 	@make fclean -C $(LIBFT)
+
+# fclean: clean
+# 	@rm -f $(NAME)
+
+# re: fclean all

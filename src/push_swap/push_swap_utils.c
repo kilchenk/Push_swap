@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 18:21:37 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/01/10 13:08:16 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/02/14 15:40:31 by kilchenk          #+#    #+#             */
+/*   Updated: 2023/02/14 17:58:42 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	error(char const *str)
 {
-	char	*ptr;
-	size_t	i;
+	if (str)
+		write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+}
 
-	i = 0;
-	if (nmemb * size > SIZE_MAX)
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (0);
-	ft_bzero(ptr, size * nmemb);
-	return (ptr);
+int	sign(char c)
+{
+	return (c == '-' || c == '+');
 }

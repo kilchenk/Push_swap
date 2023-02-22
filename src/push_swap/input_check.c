@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:00:46 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/14 19:16:17 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:48:19 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,47 @@ int	arg_check(char *av)
 	int	i;
 
 	i = 0;
-	if (sign(av[i]) && av[i + 1] != '\0') /* ? */
+	if (sign(av[i]) && av[i + 1] != '\0')
 		i++;
 	while (ft_isdigit(av[i]) && av[i])
 		i++;
 	if (!ft_isdigit(av[i]) && av[i] != '0')
 		return (0);
 	return (1);
+}
+
+static int	arg_zero(char *av)
+{
+	int	i;
+
+	i = 0;
+	if (sign(av[i]))
+		i++;
+	while (av[i] && av[i] == '0')
+		i++;
+	if (av[i] != "\0")
+		return (0);
+	return (1);
+}
+
+static int	duplicate(char *av)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		while (av[j])
+		{
+			if (j != i && ft_atois(av[i]) == ft_atois(av[j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	input_check(char **av)
@@ -37,7 +71,12 @@ int	input_check(char **av)
 	{
 		if (!arg_check(av[i]))
 			return (0);
-		
+		zero += arg_zero(av[i]);
+		i++;
 	}
-	
+	if (zero > 1)
+		return (0);
+	if (duplicate(av))
+		return (0);
+	return (1);
 }

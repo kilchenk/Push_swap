@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 18:38:49 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/22 14:17:08 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/02/22 19:36:24 by kilchenk          #+#    #+#             */
+/*   Updated: 2023/02/22 19:39:37 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include	"../../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+static void	swap(t_stack *stack)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	head;
 
-	b = NULL;
-	if (argc < 2 || (argc == 2 && argv[1][0] == 0))
-		error("Error");
-	if (argc == 2 && argv != arg_check(argv[1]))
-		a = pars_str(argv[1]);
-	else
-		a = pars_arr(argc, argv);
+	if (stack == NULL || stack->next == NULL)
+		return ;
 	
 }

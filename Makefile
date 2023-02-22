@@ -6,18 +6,21 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/14 18:58:22 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/22 19:22:02 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC =	push_swap.c					\
-		main.c						\
-		push_swap_utilis.c			\
-		input_check.c				\
-		parsing.c					\
+SRC =	src/push_swap/push_swap.c					\
+		src/push_swap/main.c						\
+		src/push_swap/push_swap_utilis.c			\
+		src/push_swap/input_check.c					\
+		src/push_swap/parsing.c						\
+		src/push_swap/stacks.c						\
+		src/push_swap/push_op.c						\
 		
+OBJ_DIR = obj/
 		
 OBJ =	$(SRC:.c=.o)
 

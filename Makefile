@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/22 19:22:02 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/23 19:56:30 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ SRC =	src/push_swap/push_swap.c					\
 		src/push_swap/parsing.c						\
 		src/push_swap/stacks.c						\
 		src/push_swap/push_op.c						\
-		
+		src/push_swap/swap_op.c						\
+		src/push_swap/rotate_op.c					\
+		src/push_swap/rev_rot_op.c					\
+		src/push_swap/utils.c						\
+
 OBJ_DIR = obj/
 		
 OBJ =	$(SRC:.c=.o)

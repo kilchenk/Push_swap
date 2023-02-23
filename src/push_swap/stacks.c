@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:13:18 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/22 13:52:35 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:55:23 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,28 @@ t_stack	*get_bot(t_stack *stack)
 	while (stack && stack->next != NULL)
 		stack = stack->next;
 	return (stack);
+}
+
+t_stack	*get_penult(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
+size_t	get_size(t_stack **stack)
+{
+	size_t	i;
+	t_stack	*new;
+
+	i = 1;
+	new = *stack;
+	if (stack == NULL)
+		return (0);
+	while (new->next != NULL)
+	{
+		i++;
+		new = new->next;
+	}
+	return (i);
 }

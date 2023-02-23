@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 18:38:49 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/23 19:33:48 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/02/23 19:55:26 by kilchenk          #+#    #+#             */
+/*   Updated: 2023/02/23 19:59:05 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+int	check_sorted(t_stack **stack)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*new;
 
-	b = NULL;
-	if (argc < 2 || (argc == 2 && argv[1][0] == 0))
-		error("Error");
-	if (argc == 2 && argv != arg_check(argv[1]))
-		a = pars_str(argv[1]);
-	else
-		a = pars_arr(argc, argv);
-	sort_type_check(&a, &b);
+	new = *stack;
+	while (new->next != NULL)
+	{
+		if (new->value > new->next->value)
+			return (0);
+		new = new->next;
+	}
+	return (1);
 }

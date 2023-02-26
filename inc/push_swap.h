@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:19:16 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/23 20:02:16 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:26:30 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void		dead(char const *str);
 void		add_bot(t_stack **stack, t_stack *new);
 void		free_split(char **number);
 void		swap_type(char const *s);
+void		three_sort(t_stack **s);
+void		small_sort(t_stack **a, t_stack **b);
 void		push_pa(t_stack **stack_a, t_stack **stack_b, int type);
 void		push_pb(t_stack **stack_a, t_stack **stack_b, int type);
 void		swap_sa(t_stack **stack_a, int type);

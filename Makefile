@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/23 19:56:30 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/26 18:40:13 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,14 @@ SRC =	src/push_swap/push_swap.c					\
 		src/push_swap/rotate_op.c					\
 		src/push_swap/rev_rot_op.c					\
 		src/push_swap/utils.c						\
+		src/push_swap/sorts.c						\
 
 OBJ_DIR = obj/
 		
 OBJ =	$(SRC:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 RM = rm -rf
 MV = mv
 

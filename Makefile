@@ -6,15 +6,22 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/26 18:40:13 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/27 18:29:19 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-
-SRC =	src/push_swap/push_swap.c					\
+LIB_F = inc/Libft
+LIB = libft.a
+SRC = src
+OBJ = obj
+INC = inc
+CFLAGS = -g -I$(INC) #-Wall -Wextra -Werror
+RM = rm -rf
+CC = gcc
+SRCS =	src/push_swap/push_swap.c					\
 		src/push_swap/main.c						\
-		src/push_swap/push_swap_utilis.c			\
+		src/push_swap/push_swap_utils.c				\
 		src/push_swap/input_check.c					\
 		src/push_swap/parsing.c						\
 		src/push_swap/stacks.c						\
@@ -25,79 +32,92 @@ SRC =	src/push_swap/push_swap.c					\
 		src/push_swap/utils.c						\
 		src/push_swap/sorts.c						\
 
-OBJ_DIR = obj/
-		
-OBJ =	$(SRC:.c=.o)
-
-CC = gcc
-FLAGS = #-Wall -Wextra -Werror
-RM = rm -rf
-MV = mv
-
-LIBFT =	inc/Libft/libft.a
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "\033[92m.\033[0m\c"
+$(NAME): $(OBJS) $(LIB_F)/$(LIB)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB_F)/$(LIB) -o $(NAME) -lreadline
 
-$(NAME): $(OBJ) $(SRC)
-	@$(MAKE) -C Libft
-	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
-	@echo "\033[92mPush_swap successfully compiled!\033[0m"
+$(LIB_F)/$(LIB):
+	@make -C $(LIB_F)
+	@echo "libft is done!"
 
 clean:
-	@$(MAKE) fclean -C Libft
-	@$(RM) $(OBJ) 
-	@echo "\033[0;31mPush_swap successfully cleaned!\033[0m"
+	@$(RM) $(OBJS)
+	rm -rf obj 
+	@echo "successfuly cleaned"
+
 fclean: clean
 	@$(RM) $(NAME)
+	@make fclean -C $(LIB_F)
+	@echo "executable removed successfuly"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+		
+# SRC =	push_swap.c push_swap_utils.c input_check.c\
+# 		parsing.c stacks.c push_op.c swap_op.c rotate_op.c\
+# 		rev_rot_op.c utils.c sorts.c
 
+# SRC_MAIN = 	main.c
 
-# SRCS =	push_swap.c					\
-# 		swap.c						\
-	
-# SRC_MAIN = main.c
+# SRCS_BONUS = 	checker.c
 
 # NAME = push_swap
+# BONUS = checker
 
 # LIBFT = inc/libft/
 
-# OBJ_DIR = obj/
-# SRC_DIR = src/push_swap/
+# OBJS_DIR = objs/
+# OBJS_BONUS_DIR = objs_bonus/
+# SRCS_DIR = src/push_swap/
+# SRCS_BONUS_DIR = src/checker/
 
-# OBJ = $(SRC:.c=.o)
+# OBJS = $(SRCS:.c=.o)
 # OBJ_MAIN = $(SRC_MAIN:.c=.o)
-# OBJ_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ))
-# OBJ_MAIN_PREFIX = $(addprefix $(OBJ_DIR), $(OBJ_MAIN))
-# SRC_PREFIX = $(addprefix $(SRC_DIR), $(SRC))
-# SRC_MAIN_PREFIX = $(addprefix $(SRC_DIR), $(SRC_MAIN))
+# OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+# OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
+# OBJECT_MAIN_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJ_MAIN))
+# OBJECTS_BONUS_PREFIXED = $(addprefix $(OBJS_BONUS_DIR), $(OBJS_BONUS))
+# SOURCES_PREFIXED = $(addprefix $(SRCS_DIR), $(SRCS))
+# SOURCE_MAIN_PREFIXED = $(addprefix $(SRCS_DIR), $(SRC_MAIN))
+# SOURCES_BONUS_PREFIXED = $(addprefix $(SRCS_BONUS_DIR), $(SRCS_BONUS))
 
 # CC = gcc
 
-# CC_FLAGS = -Wall -Werror -Wextra
+# CC_FLAGS = -Wall -Wextra -Werror
 
-# $(OBJ_DIR)%.o : $(SRC_DIR)%.c inc/push_swap.h
-# 	@mkdir -p $(OBJ_DIR)
-# 	@echo "Compiling:  $<"
+# $(OBJS_DIR)%.o : $(SRCS_DIR)%.c inc/push_swap.h
+# 	@mkdir -p $(OBJS_DIR)
+# 	@echo "Compiling: $<"
+# 	@gcc $(CC_FLAGS) -c $< -o $@
+
+# $(OBJS_BONUS_DIR)%.o : $(SRCS_BONUS_DIR)%.c inc/push_swap.h
+# 	@mkdir -p $(OBJS_BONUS_DIR)
+# 	@echo "Compiling: $<"
 # 	@gcc $(CC_FLAGS) -c $< -o $@
 
 # $(NAME): $(OBJECTS_PREFIXED) $(OBJECT_MAIN_PREFIXED)
 # 	@make -C $(LIBFT)
-# 	@gcc -o $(NAME) $(OBJECTS_PREFIXED) $(OBJ_MAIN_PREFIX) inc/libft/libft.a
+# 	@gcc -o $(NAME) $(OBJECTS_PREFIXED) $(OBJECT_MAIN_PREFIXED) inc/libft/libft.a
 
-# all: $(NAME)
+# $(BONUS): $(OBJECTS_BONUS_PREFIXED) $(OBJECTS_PREFIXED)
+# 	@make -C $(LIBFT)
+# 	@gcc -o $(BONUS) $(OBJECTS_BONUS_PREFIXED) $(OBJECTS_PREFIXED) inc/libft/libft.a
+
+# bonus: $(BONUS)
+
+# all: $(NAME) $(BONUS)
 
 # clean:
-# 	@rm -rf $(OBJ_DIR)
+# 	@rm -rf $(OBJS_DIR)
+# 	@rm -rf $(OBJS_BONUS_DIR)
 # 	@make fclean -C $(LIBFT)
+
 
 # fclean: clean
 # 	@rm -f $(NAME)
+# 	@rm -f $(BONUS)
 
 # re: fclean all

@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:19:16 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/26 19:26:30 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:30:18 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int			arg_check(char *av);
 int			sign(char c);
 int			input_check(char **av);
 int			check_sorted(t_stack **stack);
+int			check_max_value(t_stack **s);
+int			check_min_value(t_stack **s);
 void		dead(char const *str);
 void		add_bot(t_stack **stack, t_stack *new);
 void		free_split(char **number);
@@ -51,11 +53,5 @@ void		rev_rot_rra(t_stack **stack_a, int type);
 void		sort_type_check(t_stack **stack_a, t_stack **stack_b);
 long int	ft_atois(const char *str);
 size_t		get_size(t_stack **stack);
-static int	arg_zero(char *av);
-static int	duplicate(char *av);
-static void	push(t_stack **stack_a, t_stack **stack_b);
-static void	swap(t_stack *stack);
-static void	rotate(t_stack **stack);
-static void	rev_rotate(t_stack **stack);
 
 #endif

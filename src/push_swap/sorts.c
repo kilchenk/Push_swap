@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:38:56 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/26 19:26:10 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:28:11 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,26 @@ void	three_sort(t_stack	**s)
 
 void	small_sort(t_stack **a, t_stack **b)
 {
-
+	if (get_size(a) == 5)
+		push_pb(a, b, 1);
+	push_pb(a, b, 1);
+	if (!check_sorted(a))
+		three_sort(a);
+	if (get_size(b) == 2 && !check_sorted(b))
+		swap_sb(b, 1);
+	while ((*b) != NULL)
+	{
+		if ((*b)->value < (*a)->value)
+			push_pa(a, b, 1);
+		else if ((*b)->value > check_max_value(a))
+		{
+			while ((*a)->value != check_min_value(a))
+				rotate_ra(a, 1);
+			push_pa(a, b, 1);
+		}
+		else
+			rotate_ra(a, 1);
+	}
+	while (!check_sorted(a))
+		rotate_ra(a, 1);
 }

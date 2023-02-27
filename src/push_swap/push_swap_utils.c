@@ -6,18 +6,11 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:40:31 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/23 19:53:32 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:10:47 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-//exit???
-void	dead(char const *str)
-{
-	if (str)
-		write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
-}
 
 void	swap_type(char const *s)
 {
@@ -67,4 +60,40 @@ void	free_split(char **number)
 		i++;
 	}
 	free(number);
+}
+
+int	check_max_value(t_stack **s)
+{
+	int		i;
+	t_stack	*head;
+
+	head = *s;
+	if (s == NULL)
+		return (0);
+	i = head->value;
+	while (head->next != NULL)
+	{
+		if (i < head->next->value)
+			i = head->next->next;
+		head = head->next;
+	}
+	return (i);
+}
+
+int	check_min_value(t_stack **s)
+{
+	int		i;
+	t_stack	*head;
+
+	head = *s;
+	if (s == NULL)
+		return (0);
+	i = head->value;
+	while (head->next != NULL)
+	{
+		if (i > head->next->value)
+			i = head->next->next;
+		head = head->next;
+	}
+	return (i);
 }

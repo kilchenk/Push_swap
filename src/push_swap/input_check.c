@@ -6,11 +6,11 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:00:46 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/17 14:48:19 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/27 19:31:28 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include	"../../inc/push_swap.h"
 
 int	arg_check(char *av)
 {
@@ -21,7 +21,7 @@ int	arg_check(char *av)
 		i++;
 	while (ft_isdigit(av[i]) && av[i])
 		i++;
-	if (!ft_isdigit(av[i]) && av[i] != '0')
+	if (!ft_isdigit(av[i]) && av[i] != '\0')
 		return (0);
 	return (1);
 }

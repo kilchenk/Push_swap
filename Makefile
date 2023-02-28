@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/28 14:53:33 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/28 15:47:39 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,17 +36,22 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_F)/$(LIB)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIB_F)/$(LIB) -o $(NAME) -lreadline
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
 	@echo "\033[92m.\033[0m\c"
+
+$(NAME): $(OBJS) $(LIB_F)/$(LIB)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB_F)/$(LIB) -o $(NAME)
+# @echo "\033[92m.\033[0m\c"
 
 $(LIB_F)/$(LIB):
 	@make -C $(LIB_F)
-	@echo "\033[92mPush_swap successfully compiled!\033[0m"
+	@echo "\n\033[92mPush_swap successfully compiled!\033[0m"
+	@bash minion.sh
 
 clean:
 	@$(RM) $(OBJS)
-	rm -rf obj 
+	@rm -rf obj 
 	@echo "\033[0;31mPush_swap successfully cleaned!\033[0m"
 
 fclean: clean

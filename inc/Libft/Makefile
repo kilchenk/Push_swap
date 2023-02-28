@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/17 20:43:38 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/27 15:04:56 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/28 15:43:55 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,25 +69,30 @@ CC = gcc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
+# $(OBJS_DIR)%.o : %.c libft.h
+# 	@mkdir -p $(OBJS_DIR)
+# 	@echo "Compiling: $<"
+# @gcc $(CC_FLAGS) -c $< -o $@
+
 $(OBJS_DIR)%.o : %.c libft.h
 	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "\033[92m.\033[0m\c"
 
 $(NAME): $(OBJECTS_PREFIXED)
-	@ar r $(NAME) $(OBJECTS_PREFIXED)
-	@echo "Libft Done !"
+	@ar rsc $(NAME) $(OBJECTS_PREFIXED)
+# @echo "Libft Done !"
 
 all: $(NAME)
 
 clean:
-	rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 bonus: $(OBJECTS_BONUS_PREFIXED)
 	@ar r $(NAME) $(OBJECTS_BONUS_PREFIXED)
-	@echo "Libft Bonus Done"
+# @echo "Libft Bonus Done"

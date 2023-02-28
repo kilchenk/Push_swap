@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:09:59 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/23 15:54:11 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:35:40 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ static void	rotate(t_stack **stack)
 
 void	rotate_ra(t_stack **stack_a, int type)
 {
-	rotate(*stack_a);
+	rotate(stack_a);
 	if (type)
 		swap_type("ra");
 }
 
 void	rotate_rb(t_stack **stack_a, int type)
 {
-	rotate(*stack_a);
+	rotate(stack_a);
 	if (type)
 		swap_type("rb");
 }
 
 void	rotate_rr(t_stack **stack_a, t_stack **stack_b, int type)
 {
-	rotate(*stack_a);
-	rotate(*stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 	if (type)
 		swap_type("rr");
 }

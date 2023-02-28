@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/27 18:29:19 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/02/28 14:53:33 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = libft.a
 SRC = src
 OBJ = obj
 INC = inc
-CFLAGS = -g -I$(INC) #-Wall -Wextra -Werror
+CFLAGS = -g -I$(INC) -Wall -Wextra -Werror
 RM = rm -rf
 CC = gcc
 SRCS =	src/push_swap/push_swap.c					\
@@ -38,20 +38,20 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIB_F)/$(LIB)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB_F)/$(LIB) -o $(NAME) -lreadline
+	@echo "\033[92m.\033[0m\c"
 
 $(LIB_F)/$(LIB):
 	@make -C $(LIB_F)
-	@echo "libft is done!"
+	@echo "\033[92mPush_swap successfully compiled!\033[0m"
 
 clean:
 	@$(RM) $(OBJS)
 	rm -rf obj 
-	@echo "successfuly cleaned"
+	@echo "\033[0;31mPush_swap successfully cleaned!\033[0m"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make fclean -C $(LIB_F)
-	@echo "executable removed successfuly"
 
 re: fclean all
 

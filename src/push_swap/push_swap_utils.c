@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:40:31 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/27 13:10:47 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:23:36 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	swap_type(char const *s)
 	if (s)
 		write(1, s, ft_strlen(s));
 	write(1, "\n", 1);
-}
-
-int	sign(char c)
-{
-	return (c == '-' || c == '+');
 }
 
 long int	ft_atois(const char *str)
@@ -74,7 +69,7 @@ int	check_max_value(t_stack **s)
 	while (head->next != NULL)
 	{
 		if (i < head->next->value)
-			i = head->next->next;
+			i = head->next->value;
 		head = head->next;
 	}
 	return (i);
@@ -92,7 +87,7 @@ int	check_min_value(t_stack **s)
 	while (head->next != NULL)
 	{
 		if (i > head->next->value)
-			i = head->next->next;
+			i = head->next->value;
 		head = head->next;
 	}
 	return (i);

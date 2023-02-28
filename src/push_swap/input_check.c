@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:00:46 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/27 19:31:28 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:29:08 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static int	arg_zero(char *av)
 		i++;
 	while (av[i] && av[i] == '0')
 		i++;
-	if (av[i] != "\0")
+	if (av[i] != '\0')
 		return (0);
 	return (1);
 }
 
-static int	duplicate(char *av)
+static int	duplicate(char **av)
 {
 	int	i;
 	int	j;

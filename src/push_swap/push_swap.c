@@ -6,11 +6,49 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:32:40 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/27 18:08:31 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:35:51 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../../inc/push_swap.h"
+
+void	push_mid_b(t_stack **a, t_stack **b)
+{
+	t_stack	*head;
+	double	f;
+	int		mid;
+
+	head = *a;
+	f = 0;
+	while (head)
+	{
+		f += ((double)head->value / 1000);
+		head = head->next;
+	}
+	mid = (f * 1000) / get_size(a);
+	while (get_size(a) > 3)
+	{
+		if ((*a)->value <= mid)
+		{
+			push_pb(a, b, 1);
+			rotate_rb(b, 1);
+		}
+		else
+			push_pb(a, b, 1);
+	}
+}
+
+void	push_swap(t_stack **a, t_stack **b)
+{
+	int	rotates;
+
+	push_pb(a, b, 1);
+	push_pb(a, b, 1);
+	push_mid_b(a, b);
+	if (!check_sorted(a))
+		three_sort(a);
+	
+}
 
 void	sort_type_check(t_stack **stack_a, t_stack **stack_b)
 {
@@ -22,6 +60,7 @@ void	sort_type_check(t_stack **stack_a, t_stack **stack_b)
 		three_sort(stack_a);
 	else if (get_size(stack_a) <= 5 && !check_sorted(stack_a))
 		small_sort(stack_a, stack_b);
-	// else if (get_size(stack_a) > 5 && !check_sorted(stack_a))
+	else if (get_size(stack_a) > 5 && !check_sorted(stack_a))
+		push_swap(stack_a, stack_b);
 }
 //need create any sort function and after put here

@@ -6,11 +6,25 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:32:40 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/07 19:35:51 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:46:54 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../../inc/push_swap.h"
+
+void	push_back_sort(t_stack **a, t_stack **b)
+{
+	t_transf_price	*price;
+	size_t			size;
+	int				low;
+
+	size = get_size(b);
+	price = (t_transf_price *)malloc(sizeof(t_transf_price) * size);
+	while ((*b) != 0)
+	{
+		low = 
+	}
+}
 
 void	push_mid_b(t_stack **a, t_stack **b)
 {

@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:19:16 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/07 19:25:38 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:51:04 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,22 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_transf_price
+{
+	int	moves[2];
+	int	value;
+}				t_transf_price;
+
 t_stack		*pars_str(char *str);
 t_stack		*new_stack(int nb);
 t_stack		*get_bot(t_stack *stack);
 t_stack		*pars_arr(int argc, char **argv);
 t_stack		*get_penult(t_stack *stack);
+int			find_place(t_stack *a, int value);
 int			main(int argc, char **argv);
 int			arg_check(char *av);
 int			sign(char c);
+int			get_min(t_stack **s);
 int			input_check(char **av);
 int			check_sorted(t_stack **stack);
 int			check_max_value(t_stack **s);
@@ -38,6 +46,7 @@ void		push_swap(t_stack **a, t_stack **b);
 void		push_mid_b(t_stack **a, t_stack **b);
 void		add_bot(t_stack **stack, t_stack *new);
 void		free_split(char **number);
+void		push_back_sort(t_stack **a, t_stack **b);
 void		swap_type(char const *s);
 void		three_sort(t_stack **s);
 void		small_sort(t_stack **a, t_stack **b);

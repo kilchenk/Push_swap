@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:55:26 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/28 14:38:38 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:49:50 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,22 @@ void	putendl_fd(char const *s, int fd)
 int	sign(char c)
 {
 	return (c == '-' || c == '+');
+}
+
+int	get_min(t_stack **s)
+{
+	int		i;
+	t_stack	*buf;
+
+	buf = *s;
+	if (s == NULL)
+		return (0);
+	i = buf->value;
+	while (buf->next != NULL)
+	{
+		if (i > buf->next->value)
+			i > buf->next->value;
+		buf = buf->next;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/02/28 15:47:39 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/03/10 19:04:47 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ SRCS =	src/push_swap/push_swap.c					\
 		src/push_swap/rev_rot_op.c					\
 		src/push_swap/utils.c						\
 		src/push_swap/sorts.c						\
+		src/push_swap/calc.c						\
+		src/push_swap/calc_utils.c					\
+		
 
 OBJS = $(SRCS:.c=.o)
 

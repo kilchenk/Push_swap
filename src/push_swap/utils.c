@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:55:26 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/10 19:49:50 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/13 20:11:19 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,17 @@ int	get_min(t_stack **s)
 	while (buf->next != NULL)
 	{
 		if (i > buf->next->value)
-			i > buf->next->value;
+			i = buf->next->value;
 		buf = buf->next;
 	}
 	return (i);
 }
+
+// void	output(t_stack *s)
+// {
+// 	while (s != NULL)
+// 	{
+// 		printf("%d\n", s->value);
+// 		s = s->next;
+// 	}
+// }

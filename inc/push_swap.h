@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:19:16 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/10 19:51:04 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:57:42 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,17 @@ int			main(int argc, char **argv);
 int			arg_check(char *av);
 int			sign(char c);
 int			get_min(t_stack **s);
+int			min_rotations(t_stack *a, int value);
 int			input_check(char **av);
 int			check_sorted(t_stack **stack);
 int			check_max_value(t_stack **s);
 int			check_min_value(t_stack **s);
+int			check_rotate(t_transf_price *price, t_stack *a, t_stack *b);
 void		dead(char const *str);
+void		double_rot(t_transf_price *price, t_stack **a, \
+			t_stack **b, int index);
+void		single_rot(t_transf_price *price, t_stack **a, \
+			t_stack **b, int index);
 void		push_swap(t_stack **a, t_stack **b);
 void		push_mid_b(t_stack **a, t_stack **b);
 void		add_bot(t_stack **stack, t_stack *new);
@@ -63,6 +69,9 @@ void		rev_rot_rrb(t_stack **stack_b, int type);
 void		rev_rot_rra(t_stack **stack_a, int type);
 void		sort_type_check(t_stack **stack_a, t_stack **stack_b);
 long int	ft_atois(const char *str);
+static int	ab(int c);
+static int	calculate_value(int a, int b);
 size_t		get_size(t_stack **stack);
+void		output(t_stack *s);
 
 #endif

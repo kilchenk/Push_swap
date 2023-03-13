@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:32:40 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/10 16:46:54 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:14:57 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void	push_back_sort(t_stack **a, t_stack **b)
 	price = (t_transf_price *)malloc(sizeof(t_transf_price) * size);
 	while ((*b) != 0)
 	{
-		low = 
+		low = check_rotate(price, *a, *b);
+		double_rot(price, a, b, low);
+		single_rot(price, a, b, low);
+		push_pa(a, b, 1);
 	}
+	free(price);
 }
 
 void	push_mid_b(t_stack **a, t_stack **b)
@@ -61,7 +65,21 @@ void	push_swap(t_stack **a, t_stack **b)
 	push_mid_b(a, b);
 	if (!check_sorted(a))
 		three_sort(a);
-	
+	push_back_sort(a, b);
+	rotates = min_rotations(*a, get_min(a));
+	while (rotates != 0)
+	{
+		if (rotates < 0)
+		{
+			rev_rot_rra(a, 1);
+			rotates++;
+		}
+		else
+		{
+			rotate_ra(a, 1);
+			rotates--;
+		}
+	}
 }
 
 void	sort_type_check(t_stack **stack_a, t_stack **stack_b)
@@ -77,4 +95,3 @@ void	sort_type_check(t_stack **stack_a, t_stack **stack_b)
 	else if (get_size(stack_a) > 5 && !check_sorted(stack_a))
 		push_swap(stack_a, stack_b);
 }
-//need create any sort function and after put here

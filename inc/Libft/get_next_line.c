@@ -3,112 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akashets <akashets@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 16:53:19 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/01/20 18:34:21 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/01/03 14:50:13 by akashets          #+#    #+#             */
+/*   Updated: 2023/02/12 14:40:02 by akashets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include	"get_next_line.h"
 
-char	*strjoin_free(char *s1, char *s2)
+char	*ft_free(char *str)
 {
-	char	*ret;
-
-	if (s1 == NULL)
-		ret = ft_strjoin("", s2);
-	else
-	{
-		ret = ft_strjoin(s1, s2);
-		free(s1);
-	}
-	return (ret);
-}
-
-char	*trim_start(char *str)
-{
-	size_t	i;
-	char	*t;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (!str[i])
-	{	
-		free(str);
-		return (NULL);
-	}
-	t = ft_substr(str, i + 1, ft_strlen(str) - i - 1);
 	free(str);
-	return (t);
+	return (NULL);
 }
 
-char	*trim_end(char *str)
+char	*ft_readrest(int fd, char *rest)
 {
-	size_t	i;
-	char	*t;
+	char	*buf;
+	int		i;
 
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	t = ft_substr(str, 0, i + 1);
-	return (t);
-}
-
-char	*read_file(int fd, char *ret)
-{
-	int		read_b;
-	char	*line;
-
-	line = malloc(BUFFER_SIZE + 1);
-	read_b = read(fd, line, BUFFER_SIZE);
-	while (read_b != 0)
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buf == NULL)
+		return (NULL);
+	i = 1;
+	while (!ft_strchr_gnl(rest, '\n') && i != 0)
 	{
-		if (read_b == -1)
+		i = read(fd, buf, BUFFER_SIZE);
+		if (i == -1)
 		{
-			if (ret)
-				free(ret);
-			free(line);
+			free(rest);
+			free(buf);
 			return (NULL);
 		}
-		line[read_b] = 0;
-		ret = strjoin_free(ret, line);
-		if (ft_strrchr(line, '\n'))
-			break ;
-		read_b = read(fd, line, BUFFER_SIZE);
+		buf[i] = '\0';
+		rest = ft_strjoin_gnl(rest, buf);
 	}
-	free(line);
-	return (ret);
+	free(buf);
+	return (rest);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
 	char		*ret;
+	static char	*rest;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	rest = ft_readrest(fd, rest);
+	if (rest == NULL)
 		return (NULL);
-	if (read(fd, 0, 0) < 0)
-	{
-		if (line)
-			free(line);
-		line = NULL;
-		return (NULL);
-	}
-	if (!ft_strrchr(line, '\n'))
-		line = read_file(fd, line);
-	if (!line)
-		return (NULL);
-	ret = trim_end(line);
-	line = trim_start(line);
+	ret = ft_line(rest);
+	rest = ft_rest(rest);
 	return (ret);
 }
-
-// int main (void)
-// {
-// 	char *x;
-// 	x = get_next_line(0);
-// 	printf ("%s\n", x);
-
-// }

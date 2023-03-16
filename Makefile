@@ -6,7 +6,7 @@
 #    By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 18:17:45 by kilchenk          #+#    #+#              #
-#    Updated: 2023/03/16 17:00:06 by kilchenk         ###   ########.fr        #
+#    Updated: 2023/03/16 17:27:17 by kilchenk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = libft.a
 SRC = src
 OBJ = obj
 INC = inc
-CFLAGS = -g -I$(INC) -Wall -Wextra -Werror
+CFLAGS =  -I$(INC) -Wall -Wextra -Werror
 RM = rm -rf
 CC = gcc
 SRCS =	src/push_swap/push_swap.c					\
@@ -33,6 +33,8 @@ SRCS =	src/push_swap/push_swap.c					\
 		src/push_swap/calc.c						\
 		src/push_swap/calc_utils.c					\
 		
+
+
 
 OBJS = $(SRCS:.c=.o)
 
@@ -53,7 +55,7 @@ $(LIB_F)/$(LIB):
 	@bash minion.sh
 
 clean:
-	@$(RM) $(OBJS) src/checker/checker.o
+	@$(RM) $(OBJS) src/checker/checker.o src/push_swap/main.o
 	@rm -rf obj 
 	@echo "\033[0;31mPush_swap successfully cleaned!\033[0m"
 

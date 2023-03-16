@@ -3,38 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akashets <akashets@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:08:50 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/01/20 18:56:12 by kilchenk         ###   ########.fr       */
+/*   Created: 2023/01/03 14:38:32 by akashets          #+#    #+#             */
+/*   Updated: 2023/02/12 14:55:44 by akashets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-//library
-# include <string.h>
 # include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <fcntl.h>
-# include <limits.h>
-//functions
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strrchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*strjoin_free(char *s1, char *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*trim_start(char *str);
-char	*trim_end(char *str);
-char	*ft_strdup(const char *s);
+char	*ft_readrest(int fd, char *rest);
+char	*ft_rest(char *rest);
+char	*ft_line(char *rest);
+char	*ft_strchr_gnl(char *str, int i);
+char	*ft_strjoin_gnl(char *rest, char *buf);
+size_t	ft_sl_gnl(char *s);
+char	*ft_free(char *str);
 
 #endif

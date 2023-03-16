@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:40:31 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/02/28 14:23:36 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:25:35 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	swap_type(char const *s)
 
 long int	ft_atois(const char *str)
 {
-	int	mark;
-	int	num;
-	int	i;
+	long int	mark;
+	long int	num;
+	int			i;
 
 	i = 0;
 	num = 0;
@@ -36,8 +36,6 @@ long int	ft_atois(const char *str)
 	}
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		if (str[i] == '8' && num == 214748364)
-			return (-2147483648);
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}

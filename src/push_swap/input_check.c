@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:00:46 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/13 19:50:13 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:20:31 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,19 @@ int	input_check(char **av)
 	if (duplicate(av))
 		return (0);
 	return (1);
+}
+
+void	list_clear(t_stack **a)
+{
+	t_stack	*cur;
+	t_stack	*next;
+
+	cur = *a;
+	while (cur)
+	{
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	*a = NULL;
 }

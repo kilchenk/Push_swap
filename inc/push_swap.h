@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:19:16 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/13 19:57:42 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:40:35 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "Libft/libft.h"
+# include "Libft/get_next_line.h"
 
 typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
-}	t_stack;
+}				t_stack;
 
 typedef struct s_transf_price
 {
@@ -68,10 +69,8 @@ void		rev_rot_rrr(t_stack **stack_a, t_stack **stack_b, int type);
 void		rev_rot_rrb(t_stack **stack_b, int type);
 void		rev_rot_rra(t_stack **stack_a, int type);
 void		sort_type_check(t_stack **stack_a, t_stack **stack_b);
+void		list_clear(t_stack **a);
 long int	ft_atois(const char *str);
-static int	ab(int c);
-static int	calculate_value(int a, int b);
 size_t		get_size(t_stack **stack);
-void		output(t_stack *s);
 
 #endif

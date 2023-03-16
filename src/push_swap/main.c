@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 18:38:49 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/13 20:11:31 by kilchenk         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:00:36 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int argc, char **argv)
 	else
 		a = pars_arr(argc, argv);
 	sort_type_check(&a, &b);
+	list_clear(&a);
 	return (0);
 }

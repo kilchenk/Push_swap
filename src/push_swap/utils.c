@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:55:26 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/09/12 18:30:33 by kilchenk         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:43:47 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	check_sorted(t_stack **stack)
 	return (1);
 }
 
-//exit???
 void	dead(char const *str)
 {
 	ft_putendl_fd((char *)str, 2);
@@ -63,11 +62,3 @@ int	get_min(t_stack **s)
 	return (i);
 }
 
-// void	output(t_stack *s)
-// {
-// 	while (s != NULL)
-// 	{
-// 		printf("%d\n", s->value);
-// 		s = s->next;
-// 	}
-// }

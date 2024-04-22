@@ -6,12 +6,11 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:40:31 by kilchenk          #+#    #+#             */
-/*   Updated: 2024/04/22 14:47:32 by kilchenk         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:58:00 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
 
 void	swap_type(char const *s)
 {

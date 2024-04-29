@@ -6,7 +6,7 @@
 /*   By: kilchenk <kilchenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:15:42 by kilchenk          #+#    #+#             */
-/*   Updated: 2023/03/20 20:51:23 by kilchenk         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:48:49 by kilchenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdint.h>
 //functions
 
 typedef struct s_list

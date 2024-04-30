@@ -75,4 +75,6 @@ Replace <list_of_numbers> with the same list of integers used in step 3. This co
 6. Also to count the number of the operations you can type this in terminal 
 
     ARG="<list_of_numbers>"; ./push_swap $ARG | wc -l
-    
+   
+---
+Made by kilchenk: kilchenk@student.42wolfsburg.de | LinkedIn: [kilchenk](https://www.linkedin.com/in/kyrylo-ilchenko/)
